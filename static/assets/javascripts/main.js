@@ -51,17 +51,63 @@ rb.navigate = function(uri, params) {
     var i;
 
     // get the query string
-    if(typeof params != 'undefined') {
+    if(typeof params !== 'undefined') {
       for(var key in params){
-          query = query + key + "=" + params[key] + "&";
+          if (typeof key !== 'undefined' && typeof params[key] !== 'undefined') {
+             console.log("Adding Key (A)");
+            query = query + key + "=" + params[key] + "&";
+          }
       }
     } 
 
     for(var key in rb.state) {
-        query = query + key + "=" + rb.state[key] + "&";
+        if (typeof key !== 'undefined' && typeof rb.state[key] !== 'undefined') {
+          console.log("Adding Key (B)");
+          query = query + key + "=" + rb.state[key] + "&";
+        }
     }
 
     var url = uri + query;
     document.location = url;
 }
 
+
+/* ---------------------------------------------
+ * Call this function to check if the printer is ready
+ * the response will come in the printerReadyResponse function
+ * --------------------------------------------- */
+rb.printerReadyRequest = function() {
+    $.ajax({
+        url: '/status',
+        success: rb.printerReadyResponse,
+    });
+}
+
+/* ---------------------------------------------
+ * Call this function to check if the printer is ready
+ * the response will come in the printerReadyResponse function
+ * --------------------------------------------- */
+rb.printerReadyResponse = function(res, result, req) {
+  // /status response
+    if(res == "READY") {
+      $('#printer-status').html("Printer: ready...");
+      $('#retry-button').prop('disabled', true);
+      $('#print-button').prop('disabled', false);
+    } else {
+      $('#printer-status').html("Printer: error...");
+      $('#retry-button').prop('disabled', false);
+      $('#print-button').prop('disabled', true);
+    } 
+}
+
+/* ---------------------------------------------
+ * Look at state, calculate a file name and print it
+ * --------------------------------------------- */
+rb.printCurrentFile = function() {
+    var file = rb.state.component + "-" + rb.state.orientation + "-" + rb.state.size;
+    var url = "/loadAndPrint/" + file;
+
+    alert("Call: " + url);
+
+
+}
