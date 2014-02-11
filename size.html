@@ -1,0 +1,31 @@
+---
+layout: default
+title: Robohand 
+---
+
+<!-- the menu for this page -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    rb.menu([
+      {caption: "Home", url:"/index.html"},
+      {caption: "Component", url:"/component.html"},
+      {caption: "Orientation", url: "/orientation.html"},
+      {caption: "Size" }
+    ]);
+  });
+</script>
+
+
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'30mm'})">30</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'32mm'})">32</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'34mm'})">34</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'36mm'})">36</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'38mm'})">38</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'40mm'})">40</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'42mm'})">42</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'44mm'})">44</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'46mm'})">46</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'48mm'})">48</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/print.html',{size:'50mm'})">50</button>
+
+

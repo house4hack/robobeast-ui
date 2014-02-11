@@ -1,0 +1,20 @@
+---
+layout: default
+title: Robohand 
+---
+
+<!-- the menu for this page -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    rb.menu([
+      {caption: "Home", url:"/index.html"},
+      {caption: "Component", url:"/component.html"},
+      {caption: "Orientation"}
+    ]);
+  });
+</script>
+
+
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/size.html',{orientation:'left'})">Left</button>
+<button class="btn btn-primary btn-default btn-fixed" onclick="rb.navigate('/size.html',{orientation:'right'})">Right</button>
+
