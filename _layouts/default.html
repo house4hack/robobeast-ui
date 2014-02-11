@@ -10,17 +10,20 @@
 
     <script type="text/javascript" src="/static/assets/javascripts/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="/static/assets/javascripts/main.js"></script>
+
+    <!-- capture the state -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        rb.captureState(); 
+      });
+    </script>
+
+
   </head>
   <body>
     <div class="container">
       <!-- top status bar -->
       <ol id="top-menu" class="breadcrumb">
-        <!--
-        <li><a class="xl" href="#">Home</a></li>
-        <li><a class="xl" href="#">Component</a></li>
-        <li><a class="xl" href="#">Orientation</a></li>
-        <li class="active xl">Size</li>
-        -->
       </ol>        
       <!-- the button bar -->
       <div class="panel" style="text-align:center">

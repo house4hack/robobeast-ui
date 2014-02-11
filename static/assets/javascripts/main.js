@@ -1,5 +1,21 @@
 rb = {}
 
+/* ---------------------------------------------
+ * Capture the state from previous pages
+ * --------------------------------------------- */
+rb.captureState = function() {
+    rb.state = {};
+    var i, pair;
+    var s = location.search;
+    s = s.substring(1,s.length - 1);
+    
+    var parts = s.split('&');
+    for(i=0; i<parts.length; i++) {
+      pair = parts[i].split("=");
+      rb.state[pair[0]] = pair[1];
+    } 
+}
+
 
 /* ---------------------------------------------
  * Setup the top level menu
@@ -32,6 +48,7 @@ rb.menu = function(items) {
 rb.navigate = function(uri, params) {
 
     var query = "?";
+    var i;
 
     // get the query string
     if(typeof params != 'undefined') {
@@ -39,6 +56,10 @@ rb.navigate = function(uri, params) {
           query = query + key + "=" + params[key] + "&";
       }
     } 
+
+    for(var key in rb.state) {
+        query = query + key + "=" + rb.state[key] + "&";
+    }
 
     var url = uri + query;
     document.location = url;
